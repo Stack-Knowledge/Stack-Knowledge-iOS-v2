@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "*" ]
+
+env:
+  CACHED_DEPENDENCY_PATHS: ${{ github.workspace }}/Tuist/Dependencies
+  STACK_KNOWLEDGE_IOS_DISCORD_WEBHOOK: ${{ secrets.STACK_KNOWLEDGE_IOS_DISCORD_WEBHOOK }}
+
+jobs:
+  prepare-dependency:
+    name: ⚙️ Prepare-Dependency
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install tuist
+        run: curl -Ls https://install.tuist.io | bash
+
+      - name: Compute dependency cache key
+        id: compute_hash
+        run: echo "hash=${{ hashFiles('Tuist/Dependencies.swift') }}" >> $GITHUB_OUTPUT
+
+      - name: Check dependency cache
+        uses: actions/cache@v3
+        id: cache_dependencies
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ steps.compute_hash.outputs.hash }}
+
+      - name: Install dependencies
+        if: steps.cache_dependencies.outputs.cache-hit == ''
+        run: tuist fetch
+    outputs:
+      dependency_cache_key: ${{ steps.compute_hash.outputs.hash }}
+
+  test:
+    name: 🧪 Test
+    runs-on: macos-latest
+    needs: prepare-dependency
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        xcode-version: latest
+
+    - name: Install tuist
+      run: curl -Ls https://install.tuist.io | bash
+
+    - name: Check dependency cache
+      uses: actions/cache@v3
+      id: cache_dependencies
+      with:
+        path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+        key: ${{ needs.prepare-dependency.outputs.dependency_cache_key }}
+
+    - name: Install dependencies
+      if: steps.cache_dependencies.outputs.cache-hit != 'true'
+      run: tuist fetch
+
+    - name: Test with tuist
+      run: TUIST_CI=1 tuist test
+
+    - name: Stack-Knowledge iOS CI Discord Notification
+      uses: sarisia/actions-status-discord@v1
+      if: ${{ success() }}
+      with:
+        title: ✅ Stack-Knowledge-iOS-CI 성공! ✅
+        webhook: ${{ env.STACK_KNOWLEDGE_IOS_DISCORD_WEBHOOK }}
+        color: 00FF00
+
+    - name: Stack-Knowledge iOS CI Discord Notification
+      uses: sarisia/actions-status-discord@v1
+      if: ${{ failure() }}
+      with:
+        title: ❗️ Stack-Knowledge-iOS-CI 실패! ❗️
+        webhook: ${{ env.STACK_KNOWLEDGE_IOS_DISCORD_WEBHOOK }}
+        color: FF0000

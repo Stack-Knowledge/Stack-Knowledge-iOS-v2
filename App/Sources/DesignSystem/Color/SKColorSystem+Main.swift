@@ -1,9 +1,16 @@
-//
-//  SKColorSystem+Main.swift
-//  StackKnowledge
-//
-//  Created by AnnKangHo on 2/28/24.
-//  Copyright © 2024 team.filo. All rights reserved.
-//
+import SwiftUI
 
-import Foundation
+public extension Color.SKColorSystem {
+    // swiftlint:disable identifier_name
+    enum Main: SKColorable {
+        case mainColor
+    }
+}
+
+public extension Color.SKColorSystem.Main {
+    var color: Color {
+        switch self {
+        case .mainColor: return StackKnowledgeAsset.Main.mainColor.swiftUIColor
+        }
+    }
+}

@@ -1,10 +1,10 @@
 import SwiftUI
 
-public struct SKImage: View {
+public struct SKBannerImage: View {
     public enum Image {
-        case Banner
-        case BaseProfile
-        case SignUp
+        case Banner1
+        case Banner2
+        case Banner3
     }
 
     private var image: Image
@@ -26,7 +26,11 @@ public struct SKImage: View {
 
     private func smsImageToImage() -> SwiftUI.Image {
         switch image {
-        case .Banner:
+        case .Banner1:
+            return StackKnowledgeAsset.Banner.bannerImage1.swiftUIImage
+        case .Banner2:
+            return StackKnowledgeAsset.Banner.bannerImage1.swiftUIImage
+        case .Banner3:
             return StackKnowledgeAsset.Banner.bannerImage1.swiftUIImage
         }
     }

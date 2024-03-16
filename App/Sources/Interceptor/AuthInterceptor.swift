@@ -22,7 +22,7 @@ class AuthInterceptor: RequestInterceptor {
         
         if tokenExpirationDate < Date() {
             AF.request(
-                "https://www.stack-knowledge/auth",
+                URL(string: Bundle.module.object(forInfoDictionaryKey: "BASE_URL") as? String ?? "") ?? URL(string: "https://www.google.com%22%29%21/")!,
                 method: .patch,
                 headers: [
                     "RefreshToken": refresh

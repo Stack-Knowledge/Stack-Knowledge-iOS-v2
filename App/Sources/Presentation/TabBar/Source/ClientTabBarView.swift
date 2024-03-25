@@ -6,7 +6,6 @@ enum ClientBottomTab {
 
 struct ClientTabBarView: View {
     @State var currentTab: ClientBottomTab = .main
-    @State var tabbarHidden = false
     
     private let mainFactory: any ClientMainFactory
     private let missionFactory: any ClientMissionFactory

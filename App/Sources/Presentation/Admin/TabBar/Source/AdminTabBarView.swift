@@ -6,7 +6,6 @@ enum AdminBottomTab {
 
 struct AdminTabBarView: View {
     @State var currentTab: AdminBottomTab = .main
-    @State var tabbarHidden = false
     
     private let mainFactory: any AdminMainFactory
     private let scoringFactory: any AdminScoringFactory

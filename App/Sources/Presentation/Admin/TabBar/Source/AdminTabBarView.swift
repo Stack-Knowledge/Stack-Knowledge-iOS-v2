@@ -35,6 +35,7 @@ struct AdminTabBarView: View {
                     StackKnowledgeAsset.TapBar.mainPageIcon.swiftUIImage
                         
                     Text("홈")
+                        .skFont(.pr12)
                 }
                     
             AnyView(scoringFactory.makeView())
@@ -43,6 +44,7 @@ struct AdminTabBarView: View {
                     StackKnowledgeAsset.TapBar.scoringPageIcon.swiftUIImage
                     
                     Text("채점하기")
+                        .skFont(.pr12)
                 }
             
             AnyView(makingFactory.makeView())
@@ -51,6 +53,7 @@ struct AdminTabBarView: View {
                     StackKnowledgeAsset.TapBar.makeMissionPageIcon.swiftUIImage
                     
                     Text("만들기")
+                        .skFont(.pr12)
                 }
                     
             AnyView(storeFactory.makeView())
@@ -59,6 +62,7 @@ struct AdminTabBarView: View {
                     StackKnowledgeAsset.TapBar.storePageIcon.swiftUIImage
                     
                     Text("상점")
+                        .skFont(.pr12)
                 }
                     
             AnyView(rankFactory.makeView())
@@ -67,6 +71,7 @@ struct AdminTabBarView: View {
                     StackKnowledgeAsset.TapBar.rankingPageIcon.swiftUIImage
                     
                     Text("랭킹")
+                        .skFont(.pr12)
                 }
         }
         .accentColor(.black)

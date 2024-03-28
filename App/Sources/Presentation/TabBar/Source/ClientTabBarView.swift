@@ -32,6 +32,7 @@ struct ClientTabBarView: View {
                     StackKnowledgeAsset.TapBar.mainPageIcon.swiftUIImage
                         
                     Text("홈")
+                        .skFont(.pr12)
                 }
                     
             AnyView(missionFactory.makeView())
@@ -40,6 +41,7 @@ struct ClientTabBarView: View {
                     StackKnowledgeAsset.TapBar.missionPageIcon.swiftUIImage
                     
                     Text("문제")
+                        .skFont(.pr12)
                 }
                     
             AnyView(storeFactory.makeView())
@@ -48,6 +50,7 @@ struct ClientTabBarView: View {
                     StackKnowledgeAsset.TapBar.storePageIcon.swiftUIImage
                     
                     Text("상점")
+                        .skFont(.pr12)
                 }
                     
             AnyView(rankFactory.makeView())
@@ -56,6 +59,7 @@ struct ClientTabBarView: View {
                     StackKnowledgeAsset.TapBar.rankingPageIcon.swiftUIImage
                     
                     Text("랭킹")
+                        .skFont(.pr12)
                 }
         }
         .accentColor(.black)

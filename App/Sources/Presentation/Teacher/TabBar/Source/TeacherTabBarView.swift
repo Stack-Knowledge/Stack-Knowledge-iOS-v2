@@ -7,29 +7,29 @@ enum TeacherBottomTab {
 struct TeacherTabBarView: View {
     @State var currentTab: TeacherBottomTab = .main
     
-    private let mainFactory: any TeacherMainFactory
-    private let scoringFactory: any TeacherScoringFactory
-    private let makingFactory: any TeacherMakingFactory
-    private let storeFactory: any TeacherStoreFactory
-    private let rankFactory: any TeacherRankFactory
+    private let teacherMainFactory: any TeacherMainFactory
+    private let teacherScoringFactory: any TeacherScoringFactory
+    private let teacherMakingFactory: any TeacherMakingFactory
+    private let teacherStoreFactory: any TeacherStoreFactory
+    private let teacherRankFactory: any TeacherRankFactory
     
     init(
-        mainFactory: any TeacherMainFactory,
-        scoringFactory: any TeacherScoringFactory,
-        makingFactory: any TeacherMakingFactory,
-        storeFactory: any TeacherStoreFactory,
-        rankFactory: any TeacherRankFactory
+        teacherMainFactory: any TeacherMainFactory,
+        teacherScoringFactory: any TeacherScoringFactory,
+        teacherMakingFactory: any TeacherMakingFactory,
+        teacherStoreFactory: any TeacherStoreFactory,
+        teacherRankFactory: any TeacherRankFactory
     ) {
-        self.mainFactory = mainFactory
-        self.scoringFactory = scoringFactory
-        self.makingFactory = makingFactory
-        self.storeFactory = storeFactory
-        self.rankFactory = rankFactory
+        self.teacherMainFactory = teacherMainFactory
+        self.teacherScoringFactory = teacherScoringFactory
+        self.teacherMakingFactory = teacherMakingFactory
+        self.teacherStoreFactory = teacherStoreFactory
+        self.teacherRankFactory = teacherRankFactory
     }
     
     var body: some View {
         TabView(selection: $currentTab) {
-            AnyView(mainFactory.makeView())
+            AnyView(teacherMainFactory.makeView())
                 .tag(TeacherBottomTab.main)
                 .tabItem {
                     StackKnowledgeAsset.TapBar.mainPageIcon.swiftUIImage
@@ -38,7 +38,7 @@ struct TeacherTabBarView: View {
                         .skFont(.pr12)
                 }
                     
-            AnyView(scoringFactory.makeView())
+            AnyView(teacherScoringFactory.makeView())
                 .tag(TeacherBottomTab.scoring)
                 .tabItem {
                     StackKnowledgeAsset.TapBar.scoringPageIcon.swiftUIImage
@@ -47,7 +47,7 @@ struct TeacherTabBarView: View {
                         .skFont(.pr12)
                 }
             
-            AnyView(makingFactory.makeView())
+            AnyView(teacherMakingFactory.makeView())
                 .tag(TeacherBottomTab.making)
                 .tabItem {
                     StackKnowledgeAsset.TapBar.makeMissionPageIcon.swiftUIImage
@@ -56,7 +56,7 @@ struct TeacherTabBarView: View {
                         .skFont(.pr12)
                 }
                     
-            AnyView(storeFactory.makeView())
+            AnyView(teacherStoreFactory.makeView())
                 .tag(TeacherBottomTab.store)
                 .tabItem {
                     StackKnowledgeAsset.TapBar.storePageIcon.swiftUIImage
@@ -65,7 +65,7 @@ struct TeacherTabBarView: View {
                         .skFont(.pr12)
                 }
                     
-            AnyView(rankFactory.makeView())
+            AnyView(teacherRankFactory.makeView())
                 .tag(TeacherBottomTab.rank)
                 .tabItem {
                     StackKnowledgeAsset.TapBar.rankingPageIcon.swiftUIImage

@@ -28,52 +28,62 @@ struct TeacherTabBarView: View {
     }
     
     var body: some View {
-        TabView(selection: $currentTab) {
-            AnyView(teacherMainFactory.makeView())
-                .tag(TeacherBottomTab.main)
-                .tabItem {
-                    StackKnowledgeAsset.TapBar.mainPageIcon.swiftUIImage
+        ZStack {
+            TabView(selection: $currentTab) {
+                AnyView(teacherMainFactory.makeView())
+                    .tag(TeacherBottomTab.main)
+                    .tabItem {
+                        StackKnowledgeAsset.TapBar.mainPageIcon.swiftUIImage
+                            
+                        Text("홈")
+                            .skFont(.pr12)
+                    }
                         
-                    Text("홈")
-                        .skFont(.pr12)
-                }
-                    
-            AnyView(teacherScoringFactory.makeView())
-                .tag(TeacherBottomTab.scoring)
-                .tabItem {
-                    StackKnowledgeAsset.TapBar.scoringPageIcon.swiftUIImage
-                    
-                    Text("채점하기")
-                        .skFont(.pr12)
-                }
+                AnyView(teacherScoringFactory.makeView())
+                    .tag(TeacherBottomTab.scoring)
+                    .tabItem {
+                        StackKnowledgeAsset.TapBar.scoringPageIcon.swiftUIImage
+                        
+                        Text("채점하기")
+                            .skFont(.pr12)
+                    }
+                
+                AnyView(teacherMakingFactory.makeView())
+                    .tag(TeacherBottomTab.making)
+                    .tabItem {
+                        StackKnowledgeAsset.TapBar.makeMissionPageIcon.swiftUIImage
+                        
+                        Text("만들기")
+                            .skFont(.pr12)
+                    }
+                        
+                AnyView(teacherStoreFactory.makeView())
+                    .tag(TeacherBottomTab.store)
+                    .tabItem {
+                        StackKnowledgeAsset.TapBar.storePageIcon.swiftUIImage
+                        
+                        Text("상점")
+                            .skFont(.pr12)
+                    }
+                        
+                AnyView(teacherRankFactory.makeView())
+                    .tag(TeacherBottomTab.rank)
+                    .tabItem {
+                        StackKnowledgeAsset.TapBar.rankingPageIcon.swiftUIImage
+                        
+                        Text("랭킹")
+                            .skFont(.pr12)
+                    }
+            }
+            .accentColor(.black)
             
-            AnyView(teacherMakingFactory.makeView())
-                .tag(TeacherBottomTab.making)
-                .tabItem {
-                    StackKnowledgeAsset.TapBar.makeMissionPageIcon.swiftUIImage
-                    
-                    Text("만들기")
-                        .skFont(.pr12)
-                }
-                    
-            AnyView(teacherStoreFactory.makeView())
-                .tag(TeacherBottomTab.store)
-                .tabItem {
-                    StackKnowledgeAsset.TapBar.storePageIcon.swiftUIImage
-                    
-                    Text("상점")
-                        .skFont(.pr12)
-                }
-                    
-            AnyView(teacherRankFactory.makeView())
-                .tag(TeacherBottomTab.rank)
-                .tabItem {
-                    StackKnowledgeAsset.TapBar.rankingPageIcon.swiftUIImage
-                    
-                    Text("랭킹")
-                        .skFont(.pr12)
-                }
+            VStack {
+                Spacer()
+                Rectangle()
+                    .frame(maxWidth: .infinity, maxHeight: 1)
+                    .foregroundColor(Color.SKColorSystem.Gray.lightgray1.color)
+                    .padding(.bottom, 52)
+            }
         }
-        .accentColor(.black)
     }
 }

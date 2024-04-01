@@ -22,56 +22,52 @@ struct StudentTabBarView: View {
         self.studentMissionFactory = studentMissionFactory
         self.studentStoreFactory = studentStoreFactory
         self.studentRankFactory = studentRankFactory
+        
+        UITabBar.appearance().scrollEdgeAppearance = {
+            let appearance = UITabBarAppearance()
+            appearance.backgroundColor = .white
+            return appearance
+        }()
     }
     
     var body: some View {
-        ZStack {
-            TabView(selection: $currentTab) {
-                AnyView(studentMainFactory.makeView())
-                    .tag(StudentBottomTab.main)
-                    .tabItem {
-                        StackKnowledgeAsset.TapBar.mainPageIcon.swiftUIImage
-                            
-                        Text("홈")
-                            .skFont(.pr12)
-                    }
+        TabView(selection: $currentTab) {
+            AnyView(studentMainFactory.makeView())
+                .tag(StudentBottomTab.main)
+                .tabItem {
+                    StackKnowledgeAsset.TapBar.mainPageIcon.swiftUIImage
                         
-                AnyView(studentMissionFactory.makeView())
-                    .tag(StudentBottomTab.mission)
-                    .tabItem {
-                        StackKnowledgeAsset.TapBar.missionPageIcon.swiftUIImage
-                        
-                        Text("문제")
-                            .skFont(.pr12)
-                    }
-                        
-                AnyView(studentStoreFactory.makeView())
-                    .tag(StudentBottomTab.store)
-                    .tabItem {
-                        StackKnowledgeAsset.TapBar.storePageIcon.swiftUIImage
-                        
-                        Text("상점")
-                            .skFont(.pr12)
-                    }
-                        
-                AnyView(studentRankFactory.makeView())
-                    .tag(StudentBottomTab.rank)
-                    .tabItem {
-                        StackKnowledgeAsset.TapBar.rankingPageIcon.swiftUIImage
-                        
-                        Text("랭킹")
-                            .skFont(.pr12)
-                    }
-            }
-            .accentColor(.black)
-            
-            VStack {
-                Spacer()
-                Rectangle()
-                    .frame(maxWidth: .infinity, maxHeight: 1)
-                    .foregroundColor(Color.SKColorSystem.Gray.lightgray1.color)
-                    .padding(.bottom, 52)
-            }
+                    Text("홈")
+                        .skFont(.pr12)
+                }
+                    
+            AnyView(studentMissionFactory.makeView())
+                .tag(StudentBottomTab.mission)
+                .tabItem {
+                    StackKnowledgeAsset.TapBar.missionPageIcon.swiftUIImage
+                    
+                    Text("문제")
+                        .skFont(.pr12)
+                }
+                    
+            AnyView(studentStoreFactory.makeView())
+                .tag(StudentBottomTab.store)
+                .tabItem {
+                    StackKnowledgeAsset.TapBar.storePageIcon.swiftUIImage
+                    
+                    Text("상점")
+                        .skFont(.pr12)
+                }
+                    
+            AnyView(studentRankFactory.makeView())
+                .tag(StudentBottomTab.rank)
+                .tabItem {
+                    StackKnowledgeAsset.TapBar.rankingPageIcon.swiftUIImage
+                    
+                    Text("랭킹")
+                        .skFont(.pr12)
+                }
         }
+        .accentColor(.black)
     }
 }

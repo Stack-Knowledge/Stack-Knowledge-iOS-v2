@@ -1,7 +1,7 @@
 import Foundation
 
 struct DefaultKeychain {
-    func save(key: String, value: String) {
+    func save(key: KeychainType, value: String) {
         let query: NSDictionary = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: key,
@@ -11,7 +11,7 @@ struct DefaultKeychain {
         SecItemAdd(query, nil)
     }
 
-    func load(key: String) -> String {
+    func load(key: KeychainType) -> String {
         let query: NSDictionary = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: key,
@@ -27,7 +27,7 @@ struct DefaultKeychain {
         return ""
     }
 
-    func delete(key: String) {
+    func delete(key: KeychainType) {
         let query: NSDictionary = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: key

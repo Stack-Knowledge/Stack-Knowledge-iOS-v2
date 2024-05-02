@@ -9,9 +9,9 @@ class AuthInterceptor: RequestInterceptor {
     let retryDelay: TimeInterval = 1
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
-        let access = keychain.load(key: "access_token")
-        let refresh = keychain.load(key: "refresh_token")
-        let expired = keychain.load(key: "access_token_expired")
+        let access = keychain.load(key: KeychainType.accessToken)
+        let refresh = keychain.load(key: KeychainType.refreshToken)
+        let expired = keychain.load(key: KeychainType.expiredAt)
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
@@ -35,9 +35,9 @@ class AuthInterceptor: RequestInterceptor {
                     let jsonDecoder = JSONDecoder()
                     do {
                         let tokenResponse = try jsonDecoder.decode(TokenResponseDTO.self, from: data)
-                        self.keychain.save(key: "access_token", value: tokenResponse.accessToken)
-                        self.keychain.save(key: "refresh_token", value: tokenResponse.refreshToken)
-                        self.keychain.save(key: "access_token_expired", value: tokenResponse.expiredAt)
+                        self.keychain.save(key: KeychainType.accessToken, value: tokenResponse.accessToken)
+                        self.keychain.save(key: KeychainType.refreshToken, value: tokenResponse.refreshToken)
+                        self.keychain.save(key: KeychainType.expiredAt, value: tokenResponse.expiredAt)
                         var urlRequest = urlRequest
                         urlRequest.setValue(tokenResponse.accessToken, forHTTPHeaderField: "Authorization")
                         print("리프레시 어댑터 적용 \(urlRequest.headers)")
@@ -71,9 +71,9 @@ class AuthInterceptor: RequestInterceptor {
         }
         
         if response.statusCode == 401 {
-            let access = keychain.load(key: "access_token")
-            let refresh = keychain.load(key: "refresh_token")
-            let expired = keychain.load(key: "access_token_expired")
+            let access = keychain.load(key: KeychainType.accessToken)
+            let refresh = keychain.load(key: KeychainType.refreshToken)
+            let expired = keychain.load(key: KeychainType.expiredAt)
             
             if refresh.isEmpty {
                 print("refresh token 만료")
@@ -81,8 +81,8 @@ class AuthInterceptor: RequestInterceptor {
                 return completion(.doNotRetry)
             }
             
-            keychain.save(key: "access_token", value: refresh)
-            keychain.save(key: "access_token_expired", value: formatter.string(from: Date()))
+            keychain.save(key: KeychainType.accessToken, value: refresh)
+            keychain.save(key: KeychainType.expiredAt, value: formatter.string(from: Date()))
             
             if request.retryCount < self.retryLimit {
                 print("재시도 시도 중...")
@@ -101,4 +101,10 @@ struct TokenResponseDTO: Decodable {
     let accessToken: String
     let refreshToken: String
     let expiredAt: String
+}
+
+private class BundleFinder {}
+
+extension Foundation.Bundle {
+    static let module = Bundle(for: BundleFinder.self)
 }

@@ -1,8 +1,7 @@
-//
-//  RemoteMissionDataSource.swift
-//  Service
-//
-//  Created by 정윤서 on 5/2/24.
-//
-
 import Foundation
+
+public protocol RemoteMissionDataSource {
+    func fetchAllMission() async throws -> [MissionListEntity]
+    func fetchMissionDetail() async throws -> MissionDetailEntity
+    func createMission(request: CreateMissionRequestDTO) async throws
+}

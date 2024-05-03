@@ -47,7 +47,7 @@ struct TeacherTabBarView: View {
             AnyView(teacherScoringFactory.makeView())
                 .tag(TeacherBottomTab.scoring)
                 .tabItem {
-                    StackKnowledgeAsset.TapBar.scoringPageIcon.swiftUIImage
+                    StackKnowledgeAsset.TapBar.missionPageIcon.swiftUIImage
                     
                     Text("채점하기")
                         .skFont(.pr12)

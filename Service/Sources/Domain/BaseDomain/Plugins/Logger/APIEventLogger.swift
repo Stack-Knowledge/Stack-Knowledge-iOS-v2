@@ -1,4 +1,5 @@
 import Foundation
+
 import Alamofire
 
 final class APIEventLogger: EventMonitor {

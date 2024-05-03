@@ -23,7 +23,6 @@ public struct SKTapBarIcon: View {
         case makeMissionPage
         case missionPage
         case rankingPage
-        case scoringPage
         case storePage
     }
 
@@ -45,8 +44,6 @@ public struct SKTapBarIcon: View {
             return StackKnowledgeAsset.TapBar.missionPageIcon.swiftUIImage
         case .rankingPage:
             return StackKnowledgeAsset.TapBar.rankingPageIcon.swiftUIImage
-        case .scoringPage:
-            return StackKnowledgeAsset.TapBar.scoringPageIcon.swiftUIImage
         case .storePage:
             return StackKnowledgeAsset.TapBar.storePageIcon.swiftUIImage
         }

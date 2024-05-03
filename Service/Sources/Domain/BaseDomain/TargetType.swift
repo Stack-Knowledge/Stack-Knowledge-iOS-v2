@@ -1,8 +1,9 @@
 import Foundation
+
 import Alamofire
 
-protocol TargetType: URLRequestConvertible {
-    var baseURL: URL { get }
+public protocol TargetType: URLRequestConvertible {
+    var baseURL: String { get }
     var method: HTTPMethod { get }
     var path: String { get }
     var parameters: RequestParams { get }
@@ -10,8 +11,8 @@ protocol TargetType: URLRequestConvertible {
 }
 
 extension TargetType {
-    var baseURL: URL {
-        URL(string: Bundle.module.object(forInfoDictionaryKey: "BASE_URL") as? String ?? "") ?? URL(string: "https::www.google.com")!
+    public var baseURL: String {
+        return Bundle.module.object(forInfoDictionaryKey: "BASE_URL") as? String ?? ""
     }
 
     var headers: [String: String]? {
@@ -42,7 +43,7 @@ extension TargetType {
 }
 
 extension TargetType {
-    func asURLRequest() throws -> URLRequest {
+    public func asURLRequest() throws -> URLRequest {
         let url = try baseURL.asURL()
         let keychain = DefaultKeychain()
 
@@ -104,7 +105,7 @@ extension TargetType {
 }
 
 @frozen
-enum RequestParams {
+public enum RequestParams {
     case requestPlain
     case requestWithBody(_ paramter: Encodable?)
     case requestQuery(_ parameter: Encodable?)

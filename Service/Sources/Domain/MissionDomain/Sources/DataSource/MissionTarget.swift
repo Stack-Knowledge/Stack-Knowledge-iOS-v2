@@ -33,10 +33,10 @@ extension MissionTarget: TargetType {
         switch self {
         case .fetchAllMission,
              .createMission:
-            return baseURL + "/mission"
+            return "/mission"
 
         case let .fetchMissionDetail(missionId):
-            return baseURL + "/mission/\(missionId)"
+            return "/mission/\(missionId)"
         }
     }
 

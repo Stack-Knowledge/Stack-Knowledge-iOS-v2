@@ -3,6 +3,8 @@ import Foundation
 import Alamofire
 
 public final class RemoteMissionDataSourceImpl: RemoteMissionDataSource {
+    public init() {}
+
     public func fetchAllMission() async throws -> [MissionListEntity] {
         try await API.session.request(MissionTarget.fetchAllMission, interceptor: AuthInterceptor())
             .serializingDecodable(FetchAllMissionResponseDTO.self).value.toDomain()

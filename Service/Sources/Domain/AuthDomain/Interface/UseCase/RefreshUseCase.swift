@@ -1,5 +1,5 @@
 import Foundation
 
-public protocol RefreshTokenUseCase {
+public protocol RefreshUseCase {
     func callAsFunction() async throws
 }

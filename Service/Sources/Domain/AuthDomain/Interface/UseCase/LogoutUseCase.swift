@@ -1,8 +1,5 @@
-//
-//  LogoutUseCase.swift
-//  Service
-//
-//  Created by 정윤서 on 5/4/24.
-//
-
 import Foundation
+
+public protocol LogoutUseCase {
+    func callAsFunction() async throws
+}

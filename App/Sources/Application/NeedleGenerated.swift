@@ -33,6 +33,9 @@ private func factoryd2c67a11371931c5d6bfe3b0c44298fc1c149afb(_ component: Needle
 extension AppComponent: Registration {
     public func registerItems() {
 
+        localTable["remoteSolveDataSource-any RemoteSolveDataSource"] = { [unowned self] in self.remoteSolveDataSource as Any }
+        localTable["solveRepository-any SolveRepository"] = { [unowned self] in self.solveRepository as Any }
+        localTable["solvedProblemUseCase-any SolvedProblemUseCase"] = { [unowned self] in self.solvedProblemUseCase as Any }
         localTable["remoteAuthDataSource-any RemoteAuthDataSource"] = { [unowned self] in self.remoteAuthDataSource as Any }
         localTable["authRepository-any AuthRepository"] = { [unowned self] in self.authRepository as Any }
         localTable["loginByStudentUseCase-any LoginByStudentUseCase"] = { [unowned self] in self.loginByStudentUseCase as Any }

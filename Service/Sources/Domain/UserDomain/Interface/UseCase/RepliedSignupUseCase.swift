@@ -1,5 +1,5 @@
 import Foundation
 
 public protocol RepliedSignupUseCase {
-    func callAsFunction(approveStatus: ApproveStatusType) async throws
+    func callAsFunction(userId: String, approveStatus: ApproveStatusType) async throws
 }

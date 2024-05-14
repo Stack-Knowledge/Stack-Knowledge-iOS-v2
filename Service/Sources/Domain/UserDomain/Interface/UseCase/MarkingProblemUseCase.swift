@@ -1,5 +1,5 @@
 import Foundation
 
 public protocol MarkingProblemUseCase {
-    func callAsFunction(approveStatus: ApproveStatusType) async throws
+    func callAsFunction(solveId: String, approveStatus: ApproveStatusType) async throws
 }

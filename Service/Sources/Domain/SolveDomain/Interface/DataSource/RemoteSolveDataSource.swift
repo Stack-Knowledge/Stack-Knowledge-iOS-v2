@@ -1,5 +1,5 @@
 import Foundation
 
-public protocol RemoteSolveDomainDataSource {
+public protocol RemoteSolveDataSource {
     func solvedProblem(missionId: String, solution: String) async throws
 }

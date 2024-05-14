@@ -5,19 +5,7 @@ public struct FetchAllMissionResponseDTO: Decodable {
     public let title: String
     public let point: Int
     public let missionStatus: MissionStatusType
-    public let user: UserInfoResponseDTO
-
-    public struct UserInfoResponseDTO: Decodable {
-        public let userId: String
-        public let name: String
-        public let profileImage: String
-
-        enum CodingKeys: String, CodingKey {
-            case userId = "id"
-            case name
-            case profileImage
-        }
-    }
+    public let user: FetchUserInfoResponseDTO
 
     enum CodingKeys: String, CodingKey {
         case missionId = "id"
@@ -40,12 +28,3 @@ extension FetchAllMissionResponseDTO {
     }
 }
 
-extension FetchAllMissionResponseDTO.UserInfoResponseDTO {
-    func toDomain() -> UserInfoEntity {
-        UserInfoEntity(
-            userId: userId,
-            userName: name,
-            profileImage: profileImage
-        )
-    }
-}

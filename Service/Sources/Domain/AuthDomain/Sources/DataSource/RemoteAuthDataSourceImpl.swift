@@ -3,6 +3,8 @@ import Foundation
 import Alamofire
 
 public struct RemoteAuthDataSourceImpl: RemoteAuthDataSource {
+    public init() {}
+
     public func loginByStudent(code: String) async throws {
         _ = try await API.session.request(AuthTarget.loginByStudent(code: code), interceptor: AuthInterceptor()).serializingString().value
     }

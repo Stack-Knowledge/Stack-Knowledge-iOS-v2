@@ -38,6 +38,12 @@ extension TargetType {
                 HTTPHeaderFieldKey.authorization.rawValue: "Bearer \(HTTPHeaderFieldValue.accessToken.rawValue)",
                 HTTPHeaderFieldKey.refreshToken.rawValue: HTTPHeaderFieldValue.refreshToken.rawValue
             ]
+
+        case .imageUpload:
+            return [
+                HTTPHeaderFieldKey.contentType.rawValue: HTTPHeaderFieldValue.multipart.rawValue,
+                HTTPHeaderFieldKey.authorization.rawValue: "Bearer \(HTTPHeaderFieldValue.accessToken.rawValue)"
+            ]
         }
     }
 }
@@ -68,6 +74,10 @@ extension TargetType {
             urlRequest.setValue(HTTPHeaderFieldValue.json.rawValue, forHTTPHeaderField: HTTPHeaderFieldKey.contentType.rawValue)
             urlRequest.setValue("Bearer \(keychain.load(key: KeychainType.accessToken))", forHTTPHeaderField: HTTPHeaderFieldKey.authorization.rawValue)
             urlRequest.setValue(keychain.load(key: KeychainType.refreshToken), forHTTPHeaderField: HTTPHeaderFieldKey.refreshToken.rawValue)
+
+        case .imageUpload:
+            urlRequest.setValue(HTTPHeaderFieldValue.multipart.rawValue, forHTTPHeaderField: HTTPHeaderFieldKey.contentType.rawValue)
+            urlRequest.setValue("Bearer \(keychain.load(key: KeychainType.accessToken))", forHTTPHeaderField: HTTPHeaderFieldKey.authorization.rawValue)
         }
 
         switch parameters {

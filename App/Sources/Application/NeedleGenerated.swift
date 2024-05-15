@@ -39,6 +39,11 @@ extension AppComponent: Registration {
         localTable["loginByTeacherUseCase-any LoginByTeacherUseCase"] = { [unowned self] in self.loginByTeacherUseCase as Any }
         localTable["refreshUseCase-any RefreshUseCase"] = { [unowned self] in self.refreshUseCase as Any }
         localTable["logoutUseCase-any LogoutUseCase"] = { [unowned self] in self.logoutUseCase as Any }
+        localTable["remoteStudentDataSource-any RemoteStudentDataSource"] = { [unowned self] in self.remoteStudentDataSource as Any }
+        localTable["studentRepository-any StudentRepository"] = { [unowned self] in self.studentRepository as Any }
+        localTable["fetchPointRankingListUseCase-any FetchPointRankingListUseCase"] = { [unowned self] in self.fetchPointRankingListUseCase as Any }
+        localTable["fetchMyInfoUseCase-any FetchMyInfoUseCase"] = { [unowned self] in self.fetchMyInfoUseCase as Any }
+        localTable["profileImageUploadUseCase-any ProfileImageUploadUseCase"] = { [unowned self] in self.profileImageUploadUseCase as Any }
         localTable["remoteUserDataSource-any RemoteUserDataSource"] = { [unowned self] in self.remoteUserDataSource as Any }
         localTable["userRepository-any UserRepository"] = { [unowned self] in self.userRepository as Any }
         localTable["fetchSolvedProblemListUseCase-any FetchSolvedProblemListUseCase"] = { [unowned self] in self.fetchSolvedProblemListUseCase as Any }

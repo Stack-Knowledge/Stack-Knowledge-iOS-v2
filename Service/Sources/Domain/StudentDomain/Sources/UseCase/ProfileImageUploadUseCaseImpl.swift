@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ProfileUploadUseCaseImpl: ProfileImageUploadUseCase {
+public struct ProfileImageUploadUseCaseImpl: ProfileImageUploadUseCase {
     private let studentRepository: any StudentRepository
 
     public init(studentRepository: any StudentRepository) {

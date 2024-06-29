@@ -1,9 +1,22 @@
-//
-//  AppComponent+Item.swift
-//  StackKnowledge
-//
-//  Created by 정윤서 on 6/29/24.
-//  Copyright © 2024 team.filo. All rights reserved.
-//
+import NeedleFoundation
+import Service
 
-import Foundation
+public extension AppComponent {
+    var remoteItemDataSource: any RemoteItemDataSource {
+        shared {
+            RemoteItemDataSourceImpl()
+        }
+    }
+    
+    var itemRepository: any ItemRepository {
+        shared {
+            ItemRepositoryImpl(remoteItemDataSource: remoteItemDataSource)
+        }
+    }
+    
+    var fetchItemListUseCase: any FetchItemListUseCase {
+        shared {
+            FetchItemListUseCaseImpl(itemRepository: itemRepository)
+        }
+    }
+}

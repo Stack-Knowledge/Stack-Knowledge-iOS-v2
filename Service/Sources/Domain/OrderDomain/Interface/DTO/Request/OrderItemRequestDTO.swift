@@ -1,8 +1,11 @@
-//
-//  OrderItemRequestDTO.swift
-//  Service
-//
-//  Created by 정윤서 on 6/30/24.
-//
-
 import Foundation
+
+public struct OrderItemRequestDTO: Encodable {
+    public let itemID: String
+    public let count: Int
+
+    enum CodingKeys: String, CodingKey {
+        case itemID = "itemId"
+        case count
+    }
+}

@@ -19,12 +19,11 @@ public struct FetchAllMissionResponseDTO: Decodable {
 extension FetchAllMissionResponseDTO {
     func toDomain() -> [MissionListEntity] {
         [MissionListEntity(
-            missionId: self.missionId,
-            missionTitle: self.title,
-            missionPoint: self.point,
-            missionStatus: self.missionStatus,
-            user: self.user.toDomain()
+            missionId: missionId,
+            missionTitle: title,
+            missionPoint: point,
+            missionStatus: missionStatus,
+            user: user.toDomain()
         )]
     }
 }
-

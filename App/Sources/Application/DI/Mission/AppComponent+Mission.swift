@@ -2,7 +2,7 @@ import NeedleFoundation
 import Service
 
 public extension AppComponent {
-    var remoteMissionDataSource: any RemoteMissionDataSource{
+    var remoteMissionDataSource: any RemoteMissionDataSource {
         shared {
             RemoteMissionDataSourceImpl()
         }

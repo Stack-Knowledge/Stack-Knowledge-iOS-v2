@@ -1,9 +1,34 @@
-//
-//  AppComponent+Order.swift
-//  StackKnowledge
-//
-//  Created by 정윤서 on 6/30/24.
-//  Copyright © 2024 team.filo. All rights reserved.
-//
+import NeedleFoundation
+import Service
 
-import Foundation
+public extension AppComponent {
+    var remoteOrderDataSource: any RemoteOrderDataSource {
+        shared {
+            RemoteOrderDataSourceImpl()
+        }
+    }
+
+    var orderRepository: any OrderRepository {
+        shared {
+            OrderRepositoryImpl(remoteOrderDataSource: remoteOrderDataSource)
+        }
+    }
+
+    var orderItemUseCase: any OrderItemUseCase {
+        shared {
+            OrderItemUseCaseImpl(orderRepository: orderRepository)
+        }
+    }
+
+    var fetchOrderedItemUseCase: any FetchOrderedItemUseCase {
+        shared {
+            FetchOrderedItemUseCaseImpl(orderRepository: orderRepository)
+        }
+    }
+
+    var changeItemStateUseCase: any ChangeItemStateUseCase {
+        shared {
+            ChangeItemStateUseCaseImpl(orderRepository: orderRepository)
+        }
+    }
+}

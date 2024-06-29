@@ -11,9 +11,9 @@ public extension Project {
         infoPlist: InfoPlist = .default,
         deploymentTarget: DeploymentTarget,
         dependencies: [TargetDependency] = [
-            .project(target: "ThirdPartyLib", path: Path("../ThirdPartyLib"))
+            .project(target: "ThirdPartyLib", path: Path("../ThirdPartyLib")),
         ],
-        scripts: [TargetScript] = []
+        scripts _: [TargetScript] = []
     ) -> Project {
         return Project(
             name: name,
@@ -23,7 +23,7 @@ public extension Project {
                 configurations: isCI ?
                     [
                         .debug(name: .debug),
-                        .release(name: .release)
+                        .release(name: .release),
                     ] :
                     [
                         .debug(
@@ -35,7 +35,7 @@ public extension Project {
                             name: .release,
                             xcconfig:
                             .relativeToXCConfig(type: .release, name: name)
-                        )
+                        ),
                     ]
             ),
             targets: [
@@ -49,7 +49,7 @@ public extension Project {
                     sources: ["Sources/**"],
                     scripts: [.SwiftLintString],
                     dependencies: dependencies
-                )
+                ),
             ]
         )
     }

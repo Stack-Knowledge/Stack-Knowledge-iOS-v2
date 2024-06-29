@@ -1,11 +1,11 @@
 import Foundation
 
-public struct FetchItemListResponseDTO: Decodable {
+public struct FetchItemResponseDTO: Decodable {
     public let itemID: String
     public let name: String
     public let price: Int
     public let image: String
-    
+
     enum CodingKeys: String, CodingKey {
         case itemID = "itemId"
         case name
@@ -14,13 +14,22 @@ public struct FetchItemListResponseDTO: Decodable {
     }
 }
 
-extension FetchItemListResponseDTO {
-    func toDomain() -> [ItemEntity] {
+extension FetchItemResponseDTO {
+    func toDomainEntity() -> ItemEntity {
+        ItemEntity(
+            itemID: itemID,
+            name: name,
+            price: price,
+            image: image
+        )
+    }
+
+    func toDomainList() -> [ItemEntity] {
         [ItemEntity(
-            itemID: self.itemID,
-            name: self.name,
-            price: self.price,
-            image: self.image
+            itemID: itemID,
+            name: name,
+            price: price,
+            image: image
         )]
     }
 }

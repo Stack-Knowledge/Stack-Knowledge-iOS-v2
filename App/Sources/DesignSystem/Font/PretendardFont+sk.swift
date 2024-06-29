@@ -5,16 +5,14 @@ public extension View {
         _ style: Font.SKPFontSystem,
         color: Color.SKColorSystem
     ) -> some View {
-        self
-            .font(.sk(style))
+        font(.sk(style))
             .foregroundColor(.sk(color))
     }
 
     func skFont(
         _ style: Font.SKPFontSystem
     ) -> some View {
-        self
-            .font(.sk(style))
+        font(.sk(style))
     }
 }
 

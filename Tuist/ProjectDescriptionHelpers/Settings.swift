@@ -5,4 +5,3 @@ extension SettingsDictionary {
         .codeSignIdentityAppleDevelopment()
         .automaticCodeSigning(devTeam: "")
 }
-

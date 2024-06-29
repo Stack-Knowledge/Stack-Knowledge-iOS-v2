@@ -6,7 +6,6 @@ let project = Project.executable(
     platform: .iOS,
     deploymentTarget: .iOS(targetVersion: "16.0", devices: [.iphone]),
     dependencies: [
-        .project(target: "Service", path: "../Service")
+        .project(target: "Service", path: "../Service"),
     ]
 )
-

@@ -1,8 +1,5 @@
-//
-//  ChangeItemStateUseCase.swift
-//  Service
-//
-//  Created by 정윤서 on 6/30/24.
-//
-
 import Foundation
+
+public protocol ChangeItemStateUseCase {
+    func callAsFunction(request: ChangeItemStateRequestDTO) async throws
+}

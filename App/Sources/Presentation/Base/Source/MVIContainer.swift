@@ -13,7 +13,7 @@ public final class MVIContainer<Intent, Model>: ObservableObject {
 
         modelChangePublisher
             .receive(on: RunLoop.main)
-            .sink(receiveValue: self.objectWillChange.send)
+            .sink(receiveValue: objectWillChange.send)
             .store(in: &bag)
     }
 }

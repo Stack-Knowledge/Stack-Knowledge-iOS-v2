@@ -15,9 +15,9 @@ public struct FetchRequestedSignupTeacherListResponseDTO: Decodable {
 extension FetchRequestedSignupTeacherListResponseDTO {
     func toDomain() -> [RequestedSignupTeacherListEntity] {
         [RequestedSignupTeacherListEntity(
-            teacherId: self.teacherId,
-            teacherName: self.teacherName,
-            createdAt: self.createdAt
+            teacherId: teacherId,
+            teacherName: teacherName,
+            createdAt: createdAt
         )]
     }
 }

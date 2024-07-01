@@ -10,11 +10,11 @@ public struct MissionRepositoryImpl: MissionRepository {
     public func fetchAllMission() async throws -> [MissionListEntity] {
         try await remoteMissionDataSource.fetchAllMission()
     }
-    
+
     public func fetchMissionDetail(missionId: String) async throws -> MissionDetailEntity {
         try await remoteMissionDataSource.fetchMissionDetail(missionId: missionId)
     }
-    
+
     public func createMission(request: CreateMissionRequestDTO) async throws {
         try await remoteMissionDataSource.createMission(request: request)
     }

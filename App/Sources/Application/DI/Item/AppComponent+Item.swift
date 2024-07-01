@@ -7,13 +7,13 @@ public extension AppComponent {
             RemoteItemDataSourceImpl()
         }
     }
-    
+
     var itemRepository: any ItemRepository {
         shared {
             ItemRepositoryImpl(remoteItemDataSource: remoteItemDataSource)
         }
     }
-    
+
     var fetchItemListUseCase: any FetchItemListUseCase {
         shared {
             FetchItemListUseCaseImpl(itemRepository: itemRepository)

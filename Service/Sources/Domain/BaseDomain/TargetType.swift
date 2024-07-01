@@ -23,20 +23,20 @@ extension TargetType {
         case .accessToken:
             return [
                 HTTPHeaderFieldKey.contentType.rawValue: HTTPHeaderFieldValue.json.rawValue,
-                HTTPHeaderFieldKey.authorization.rawValue: "Bearer \(HTTPHeaderFieldValue.accessToken.rawValue)"
+                HTTPHeaderFieldKey.authorization.rawValue: "Bearer \(HTTPHeaderFieldValue.accessToken.rawValue)",
             ]
 
         case .refreshToken:
             return [
                 HTTPHeaderFieldKey.contentType.rawValue: HTTPHeaderFieldValue.json.rawValue,
-                HTTPHeaderFieldKey.refreshToken.rawValue: "Bearer \(HTTPHeaderFieldValue.refreshToken.rawValue)"
+                HTTPHeaderFieldKey.refreshToken.rawValue: "Bearer \(HTTPHeaderFieldValue.refreshToken.rawValue)",
             ]
 
         case .logout:
             return [
                 HTTPHeaderFieldKey.contentType.rawValue: HTTPHeaderFieldValue.json.rawValue,
                 HTTPHeaderFieldKey.authorization.rawValue: "Bearer \(HTTPHeaderFieldValue.accessToken.rawValue)",
-                HTTPHeaderFieldKey.refreshToken.rawValue: HTTPHeaderFieldValue.refreshToken.rawValue
+                HTTPHeaderFieldKey.refreshToken.rawValue: HTTPHeaderFieldValue.refreshToken.rawValue,
             ]
 
         case .imageUpload:
@@ -48,8 +48,8 @@ extension TargetType {
     }
 }
 
-extension TargetType {
-    public func asURLRequest() throws -> URLRequest {
+public extension TargetType {
+    func asURLRequest() throws -> URLRequest {
         let url = try baseURL.asURL()
         let keychain = DefaultKeychain()
 
@@ -128,7 +128,7 @@ extension Encodable {
               let jsonData = try? JSONSerialization.jsonObject(with: data),
               let dictionaryData = jsonData as? [String: Any]
         else { return [:] }
-        
+
         return dictionaryData
     }
 }

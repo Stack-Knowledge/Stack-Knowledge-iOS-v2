@@ -45,7 +45,7 @@ extension MissionTarget: TargetType {
         case .fetchAllMission,
              .fetchMissionDetail:
             return .requestPlain
-            
+
         case let .createMission(request):
             return .requestWithBody(request)
         }

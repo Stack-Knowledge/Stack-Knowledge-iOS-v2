@@ -4,7 +4,7 @@ let workspace = Workspace(
     name: "StackKnowledge",
     projects: [
         "App",
-        "Service"
+        "Service",
     ],
     fileHeaderTemplate: nil,
     additionalFiles: []

@@ -11,12 +11,12 @@ let dependencies = Dependencies(
             .remote(
                 url: "https://github.com/Alamofire/Alamofire.git",
                 requirement: .upToNextMajor(from: "5.8.1")
-            )
+            ),
         ],
         baseSettings: .settings(
             configurations: [
                 .debug(name: .debug),
-                .release(name: .release)
+                .release(name: .release),
             ]
         )
     ),

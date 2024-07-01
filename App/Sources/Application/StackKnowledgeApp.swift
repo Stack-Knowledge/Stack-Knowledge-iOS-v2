@@ -4,7 +4,7 @@ import SwiftUI
 struct StackKnowledgeApp: App {
     var body: some Scene {
         WindowGroup {
-            EmptyView() 
+            EmptyView()
         }
     }
 }

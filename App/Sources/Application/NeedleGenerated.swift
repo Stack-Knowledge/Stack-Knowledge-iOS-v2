@@ -33,6 +33,11 @@ private func factoryd2c67a11371931c5d6bfe3b0c44298fc1c149afb(_ component: Needle
 extension AppComponent: Registration {
     public func registerItems() {
 
+        localTable["remoteOrderDataSource-any RemoteOrderDataSource"] = { [unowned self] in self.remoteOrderDataSource as Any }
+        localTable["orderRepository-any OrderRepository"] = { [unowned self] in self.orderRepository as Any }
+        localTable["orderItemUseCase-any OrderItemUseCase"] = { [unowned self] in self.orderItemUseCase as Any }
+        localTable["fetchOrderedItemUseCase-any FetchOrderedItemUseCase"] = { [unowned self] in self.fetchOrderedItemUseCase as Any }
+        localTable["changeItemStateUseCase-any ChangeItemStateUseCase"] = { [unowned self] in self.changeItemStateUseCase as Any }
         localTable["remoteSolveDataSource-any RemoteSolveDataSource"] = { [unowned self] in self.remoteSolveDataSource as Any }
         localTable["solveRepository-any SolveRepository"] = { [unowned self] in self.solveRepository as Any }
         localTable["solvedProblemUseCase-any SolvedProblemUseCase"] = { [unowned self] in self.solvedProblemUseCase as Any }
@@ -60,6 +65,9 @@ extension AppComponent: Registration {
         localTable["fetchAllMissionUseCase-any FetchAllMissionUseCase"] = { [unowned self] in self.fetchAllMissionUseCase as Any }
         localTable["fetchMissionDetailUseCase-any FetchMissionDetailUseCase"] = { [unowned self] in self.fetchMissionDetailUseCase as Any }
         localTable["createMissionUseCase-any CreateMissionUseCase"] = { [unowned self] in self.createMissionUseCase as Any }
+        localTable["remoteItemDataSource-any RemoteItemDataSource"] = { [unowned self] in self.remoteItemDataSource as Any }
+        localTable["itemRepository-any ItemRepository"] = { [unowned self] in self.itemRepository as Any }
+        localTable["fetchItemListUseCase-any FetchItemListUseCase"] = { [unowned self] in self.fetchItemListUseCase as Any }
     }
 }
 extension SampleComponent: Registration {

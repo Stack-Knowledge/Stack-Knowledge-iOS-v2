@@ -15,4 +15,3 @@ public struct UserInfoEntity: Equatable {
         self.profileImage = profileImage
     }
 }
-

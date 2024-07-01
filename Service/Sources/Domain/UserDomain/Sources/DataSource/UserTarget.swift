@@ -36,12 +36,12 @@ extension UserTarget: TargetType {
             return .patch
         }
     }
-    
+
     public var path: String {
         switch self {
         case .fetchSolvedProblemList:
             return "/user/scoring"
-            
+
         case let .fetchSolvedProblemDetail(solveId):
             return "/user/scoring/\(solveId)"
 
@@ -55,7 +55,7 @@ extension UserTarget: TargetType {
             return "/user/\(userId)"
         }
     }
-    
+
     public var parameters: RequestParams {
         switch self {
         case .fetchSolvedProblemList,

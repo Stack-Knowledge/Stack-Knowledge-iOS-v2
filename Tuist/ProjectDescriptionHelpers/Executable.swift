@@ -1,7 +1,7 @@
 import ProjectDescription
 
-extension Project {
-    public static func executable(
+public extension Project {
+    static func executable(
         name: String,
         platform: Platform,
         product: Product = .app,
@@ -14,19 +14,18 @@ extension Project {
             organizationName: publicOrganizationName,
             settings: .settings(
                 configurations: isCI ?
-                [
-                    .debug(name: .debug),
-                    .release(name: .release)
-                ]  :
-                [
-                    .debug(
-                        name: .debug,
-                        xcconfig: .relativeToXCConfig(type: .debug, name: name)
-                    ),
-                    .release(name: .release,
-                             xcconfig: .relativeToXCConfig(type: .release, name: name)
-                        )
-                ]
+                    [
+                        .debug(name: .debug),
+                        .release(name: .release),
+                    ] :
+                    [
+                        .debug(
+                            name: .debug,
+                            xcconfig: .relativeToXCConfig(type: .debug, name: name)
+                        ),
+                        .release(name: .release,
+                                 xcconfig: .relativeToXCConfig(type: .release, name: name)),
+                    ]
             ),
             targets: [
                 Target(
@@ -40,9 +39,8 @@ extension Project {
                     resources: ["Resources/**"],
                     scripts: [.SwiftLintString, .NeedleShell],
                     dependencies: [
-                        .project(target: "ThirdPartyLib", 
-                                 path: Path("../ThirdPartyLib")
-                        ),
+                        .project(target: "ThirdPartyLib",
+                                 path: Path("../ThirdPartyLib")),
                     ] + dependencies,
                     settings: settings
                 ),
@@ -55,9 +53,9 @@ extension Project {
                     infoPlist: .default,
                     sources: ["Tests/**"],
                     dependencies: [
-                        .target(name: name)
+                        .target(name: name),
                     ]
-                )
+                ),
             ]
         )
     }

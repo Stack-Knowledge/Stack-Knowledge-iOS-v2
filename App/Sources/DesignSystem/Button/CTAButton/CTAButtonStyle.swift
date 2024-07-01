@@ -28,7 +28,7 @@ extension CTAButtonStyle {
         var foregroundColor: Color {
             isEnabled ? .white : .sk(.gray(.lightgray1))
         }
-        
+
         var body: some View {
             configuration.label
                 .skFont(.pm20)

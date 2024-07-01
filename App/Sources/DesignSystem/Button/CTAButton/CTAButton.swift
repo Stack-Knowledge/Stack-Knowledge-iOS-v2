@@ -28,4 +28,3 @@ public struct CTAButton: View {
         .buttonStyle(CTAButtonStyle(style: style))
     }
 }
-

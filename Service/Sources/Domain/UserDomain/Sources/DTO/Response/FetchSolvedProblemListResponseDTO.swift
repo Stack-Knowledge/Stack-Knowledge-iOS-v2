@@ -19,11 +19,11 @@ public struct FetchSolvedProblemListResponseDTO: Decodable {
 extension FetchSolvedProblemListResponseDTO {
     func toDomain() -> [SolvedProblemListEntity] {
         [SolvedProblemListEntity(
-            solveId: self.solveId,
-            solveStatus: self.solveStatus,
-            solveTitle: self.solveTitle,
-            point: self.point,
-            user: self.user.toDomain()
+            solveId: solveId,
+            solveStatus: solveStatus,
+            solveTitle: solveTitle,
+            point: point,
+            user: user.toDomain()
         )]
     }
 }

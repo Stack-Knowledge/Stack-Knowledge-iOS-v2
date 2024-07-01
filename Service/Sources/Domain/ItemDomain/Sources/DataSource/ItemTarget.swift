@@ -13,21 +13,21 @@ extension ItemTarget: TargetType {
             return .accessToken
         }
     }
-    
+
     public var method: HTTPMethod {
         switch self {
         case .fetchItemList:
             return .get
         }
     }
-    
+
     public var path: String {
         switch self {
         case .fetchItemList:
             return "/item"
         }
     }
-    
+
     public var parameters: RequestParams {
         switch self {
         case .fetchItemList:

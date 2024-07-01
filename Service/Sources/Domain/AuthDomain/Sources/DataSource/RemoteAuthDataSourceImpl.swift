@@ -6,11 +6,13 @@ public struct RemoteAuthDataSourceImpl: RemoteAuthDataSource {
     public init() {}
 
     public func loginByStudent(code: String) async throws {
-        _ = try await API.session.request(AuthTarget.loginByStudent(code: code), interceptor: AuthInterceptor()).serializingString().value
+        _ = try await API.session.request(AuthTarget.loginByStudent(code: code), interceptor: AuthInterceptor())
+            .serializingString().value
     }
 
     public func loginByTeacher(code: String) async throws {
-        _ = try await API.session.request(AuthTarget.loginByTeacher(code: code), interceptor: AuthInterceptor()).serializingString().value
+        _ = try await API.session.request(AuthTarget.loginByTeacher(code: code), interceptor: AuthInterceptor())
+            .serializingString().value
     }
 
     public func refresh() async throws {
